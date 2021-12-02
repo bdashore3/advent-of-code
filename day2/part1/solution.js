@@ -4,25 +4,31 @@ const fs = require('fs')
 let position = 0
 let depth = 0
 
-let rawData = fs.readFileSync("../input.json", {encoding: 'utf-8'})
-let json = JSON.parse(rawData)
+const rawData = fs.readFileSync('../input.txt', {encoding: 'utf-8'})
+
+const directionArray = rawData.split("\n").map((x) => {
+    const amount = Number(x.charAt(x.length - 1))
+    const direction = x.slice(0, -1).trim()
+
+    return { direction, amount }
+})
 
 // Iterate through our prebuilt direction object list
-for (directionEntry of json.directionList) {
+for (directionEntry of directionArray) {
     switch (directionEntry.direction) {
         case 'forward':
             // increases position
-            position = position + directionEntry.amount
+            position += directionEntry.amount
 
             break
         case 'up':
             // decreases depth
-            depth = depth - directionEntry.amount
+            depth -= directionEntry.amount
 
             break
         case 'down':
             // increases depth
-            depth = depth + directionEntry.amount
+            depth += directionEntry.amount
 
             break
         default:

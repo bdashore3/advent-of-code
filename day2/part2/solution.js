@@ -5,11 +5,17 @@ let position = 0
 let depth = 0
 let aim = 0
 
-let rawData = fs.readFileSync("../input.json", {encoding: 'utf-8'})
-let json = JSON.parse(rawData)
+const rawData = fs.readFileSync('../input.txt', {encoding: 'utf-8'})
+
+const directionArray = rawData.split("\n").map((x) => {
+    const amount = Number(x.charAt(x.length - 1))
+    const direction = x.slice(0, -1).trim()
+
+    return { direction, amount }
+})
 
 // Iterate through our prebuilt direction object list
-for (directionEntry of json.directionList) {
+for (directionEntry of directionArray) {
     switch (directionEntry.direction) {
         case 'forward':
             // increases position
