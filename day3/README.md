@@ -8,8 +8,16 @@
 - Compare the zero and one total
 - If zeroes are greater than ones, do something and vice versa
 - Convert gamma and epsilon strings to integers using parseInt with a radix of 2 (because base 2)
-- Multiply the two strings together
+- Multiply the two values together
 
 # Part 2
 
-- This will take some time to write up and explain. I do not have the time for that at the moment.
+- Get the text file and split by newline
+- Run the array through a function to split into separate oxygen and carbon arrays
+  - The oxygen array has binary values full of the most occuring first char
+  - The carbon array has binary values full of the least occuring first char
+- Run the oxygen and carbon arrays in their own functions which get one binary value based upon various conditions
+  - Oxygen array: checks for the most occuring char and eliminates from there
+  - Carbon array: checks from the least occuring char and eliminates from there
+- Convert oxygen and carbon binary strings to integers using parseInt with a radix of 2 (base 2)
+- Multiply the two values together
